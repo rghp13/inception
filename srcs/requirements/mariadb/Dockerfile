@@ -1,12 +1,10 @@
 #mariadb dockerfile config
-FROM debian:buster
+FROM alpine:3.15
 
-RUN apt-get update && apt-get install -y mariadb-client mariadb-server vim
+RUN apk update && apk add mariadb mariadb-client
 LABEL version="1.0"
 LABEL description="MariaDB Server"
 #RUN service mysql start
-HEALTHCHECK --start-period=5m \
-	CMD mariadb -e 'SELECT @@datadir;' || exit 1
 #set up mariadb
 COPY ./conf/init.sh /tmp/init.sh
 ENTRYPOINT ["sh", "/tmp/init.sh"]
