@@ -9,5 +9,5 @@ HEALTHCHECK --start-period=5m \
 	CMD mariadb -e 'SELECT @@datadir;' || exit 1
 #set up mariadb
 COPY ./conf/init.sh /tmp/init.sh
-#ENTRYPOINT ["sh", "/tmp/init.sh"]
-ENTRYPOINT [ "mysqld" ]
+ENTRYPOINT ["sh", "/tmp/init.sh"]
+#ENTRYPOINT [ "mysqld" ]
