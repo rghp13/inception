@@ -1,7 +1,7 @@
 #nginx dockerfile
 FROM alpine:3.15
 
-RUN apk update && apk add nginx openssl
+RUN apk update && apk add --no-cache nginx openssl
 LABEL version="1.0"
 LABEL description="Nginx Server"
 #set up nginx

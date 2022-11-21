@@ -1,9 +1,14 @@
-#default config file for the client
+#default config file for the client, not complete
 server {
 	listen 443 ssl;
 	listen [::]:443 ssl;
+
 	server_name rponson.42.fr;
-	ssl_certificate /etc/ssl/certs/nginx.crt;
-	ssl_certificate_key /etc/ssl/private/nginx.key;
+
+	ssl_certificate /etc/ssl/certs/ssl_certificate.crt;
+	ssl_certificate_key /etc/ssl/private/ssl_key.key;
+
 	ssl_protocols TLSv1.2 TLSv1.3;
+	root /var/www/html
+	
 }
