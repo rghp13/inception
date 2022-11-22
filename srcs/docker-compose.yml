@@ -1,0 +1,59 @@
+#launch requirements/mariadb nginx and wordpress
+version: "3.7"
+services:
+    mariadb:
+        container_name: mariadb
+        networks:
+            - backend
+        build: ./requirements/mariadb
+        #dockerfile: Dockerfile
+        env_file: .env
+        volumes:
+            - mariadb:/var/lib/mysql
+        restart: unless-stopped
+        expose:
+            - "3306"
+    nginx:
+        container_name: nginx
+        volumes:
+            - wordpress:/var/www/wordpress
+        networks:
+            - backend
+        depends_on:
+            - wordpress
+        build: ./requirements/nginx
+        #dockerfile: Dockerfile
+        env_file: .env
+        ports:
+            - "443:443"
+        restart: on_failure
+    wordpress:
+        container_name: wordpress
+        env_file: .env
+        volumes:
+            - wordpress:/var/www/wordpress
+        networks:
+            - backend
+        build: ./requirements/wordpress
+        #dockerfile: Dockerfile
+        depends_on:
+            - mariadb
+        restart: on_failure
+        expose:
+            - "9000"
+volumes:
+    wordpress:
+        driver: local
+        driver_opts:
+            type: "none"
+            o: "bind"
+            device: "/home/romain/Documents/vol/wordpress"
+    mariadb:
+        driver: local
+        driver_opts:
+            type: "none"
+            o: "bind"
+            device: "/home/romain/Documents/vol/mariadb"
+networks:
+    backend:
+        driver: bridge
