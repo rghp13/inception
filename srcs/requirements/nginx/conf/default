@@ -3,7 +3,7 @@ server {
 	listen 443 ssl;
 	listen [::]:443 ssl;
 
-	server_name rponson.42.fr;
+	server_name rponsonn.42.fr;
 
 	ssl_certificate /etc/ssl/certs/ssl_certificate.crt;
 	ssl_certificate_key /etc/ssl/private/ssl_key.key;

@@ -1,7 +1,6 @@
 #!/bin/bash
 #wordpress-cli setup
 sleep 10
-ln -s /usr/bin/php
 if [ ! -f /var/www/html/wp-config.php ]; then
 	echo "Installing wordpress..."
 	mkdir -p /var/www/html
@@ -13,6 +12,4 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 	wp user create --allow-root romain rghp13@gmail.com --role=administrator --user_pass=1234
 	wp user create --allow-root correcteur --user_pass=grademe --role=author
 	echo "Wordpress installed"
-	find / -name php
-	sleep 10
 fi
