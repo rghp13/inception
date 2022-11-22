@@ -17,4 +17,6 @@ clean:
 	docker volume prune -f
 	docker rmi -f $(docker images -a -q)
 	docker rm -f $(docker ps -a -q)
-.PHONY: build up down restart logs
+launch: build up
+
+.PHONY: build up down restart logs clean launch
