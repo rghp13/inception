@@ -18,4 +18,4 @@ COPY ./conf/php-fpm.conf /etc/php7/pool.d
 COPY ./tools/wp-config.php /var/www/
 COPY ./tools/init.sh /tmp/init.sh
 ENTRYPOINT ["sh", "/tmp/init.sh"]
-CMD [ "/usr/sbin/php-fpm7", "-F -R" ]
+#CMD [ "/usr/sbin/php-fpm7", "-F -R" ]

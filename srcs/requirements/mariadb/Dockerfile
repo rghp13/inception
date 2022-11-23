@@ -6,4 +6,5 @@ LABEL version="1.0"
 LABEL description="MariaDB Server"
 #set up mariadb
 COPY ./conf/init.sh /tmp/init.sh
+COPY ./conf/server.cnf /etc/my.cnf.d/mariadb-server.cnf
 ENTRYPOINT ["sh", "/tmp/init.sh"]

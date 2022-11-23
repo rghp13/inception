@@ -8,8 +8,9 @@ if [ ! -f /var/www/html/wp-config.php ]; then
 	wp core download --allow-root
 	mv /var/www/wp-config.php /var/www/html/wp-config.php
 	#replace below with env variables, do i need --admin_email?
-	wp core install --allow-root --url=$URL/wordpress --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD
+	wp core install --allow-root --url=$URL --title=$WP_TITLE --admin_user=$WP_ADMIN_USR --admin_password=$WP_ADMIN_PWD --admin_email=$WP_ADMIN_EMAIL
 	wp user create --allow-root $WPUSER1 $WPUSER1MAIL --role=administrator --user_pass=$WPUSER1PWD
-	wp user create --allow-root $WPUSER2 --user_pass=$WPUSER2PWD --role=author
+	wp user create --allow-root $WPUSER2 $WPUSER2MAIL --role=author --user_pass=$WPUSER2PWD
 	echo "Wordpress installed"
 fi
+/usr/sbin/php-fpm7 -F -R
