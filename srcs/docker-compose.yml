@@ -1,5 +1,21 @@
 #launch requirements/mariadb nginx and wordpress
 version: "3.7"
+volumes:
+    wordpress:
+        driver: local
+        driver_opts:
+            type: "none"
+            o: "bind"
+            device: "/home/romain/Documents/vol/wordpress"
+    mariadb:
+        driver: local
+        driver_opts:
+            type: "none"
+            o: "bind"
+            device: "/home/romain/Documents/vol/mariadb"
+networks:
+    backend:
+        driver: bridge
 services:
     mariadb:
         container_name: mariadb
@@ -41,19 +57,3 @@ services:
         restart: on_failure
         expose:
             - "9000"
-volumes:
-    wordpress:
-        driver: local
-        driver_opts:
-            type: "none"
-            o: "bind"
-            device: "/home/romain/Documents/vol/wordpress"
-    mariadb:
-        driver: local
-        driver_opts:
-            type: "none"
-            o: "bind"
-            device: "/home/romain/Documents/vol/mariadb"
-networks:
-    backend:
-        driver: bridge
