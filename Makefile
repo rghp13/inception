@@ -15,6 +15,7 @@ clean:
 	docker-compose -f ./srcs/docker-compose.yml down
 	docker system prune -a -f
 	docker volume prune -f
+	docker volume rm $$(docker volume ls -q)
 	docker rmi -f $(docker images -a -q)
 	docker rm -f $(docker ps -a -q)
 launch: build up

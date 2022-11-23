@@ -3,7 +3,6 @@
 sleep 10
 if [ ! -f /var/www/html/wp-config.php ]; then
 	echo "Installing wordpress..."
-	cat /var/www/wp-config.php
 	mkdir -p /var/www/html
 	cd /var/www/html
 	wp core download --allow-root
