@@ -20,7 +20,10 @@ clean:
 launch: build up
 volume: 
 	@mkdir -p ~/vol/mariadb
+	@echo "MariaDB volume created"
 	@mkdir -p ~/vol/wordpress
+	@echo "Wordpress volume created"
 setup:
 	@sudo grep -qxF "127.0.0.1 rponsonn.42.fr" /etc/hosts || echo "127.0.0.1 rponsonn.42.fr" >> /etc/hosts
+	@echo "Host added"
 .PHONY: all build up down restart clean launch volume setup
