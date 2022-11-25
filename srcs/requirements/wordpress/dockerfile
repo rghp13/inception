@@ -1,6 +1,8 @@
 #Wordpress/PHP dockerfile
 FROM alpine:3.15
 
+RUN (delgroup www-data || true)
+RUN adduser -D -H -u 1000 -s /bin/bash www-data
 RUN apk update && apk add mariadb-client wget
 RUN apk add php7 php7-fpm php7-mysqli php7-mbstring php7-json php7-session php7-phar
 LABEL version="1.0"
@@ -14,7 +16,8 @@ RUN chown -R root:root /var/www/wordpress
 RUN wget https://raw.githubusercontent.com/wp-cli/builds/gh-pages/phar/wp-cli.phar
 RUN chmod +x wp-cli.phar
 RUN mv wp-cli.phar /usr/local/bin/wp
-COPY ./conf/php-fpm.conf /etc/php7/pool.d
+#was /etc/php7/pool.d
+COPY ./conf/php-fpm.conf /etc/php7/php-fpm.conf
 COPY ./tools/wp-config.php /var/www/
 COPY ./tools/init.sh /tmp/init.sh
 ENTRYPOINT ["sh", "/tmp/init.sh"]
