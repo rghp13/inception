@@ -3,7 +3,6 @@ FROM alpine:3.15
 
 RUN (delgroup www-data || true)
 RUN adduser -D -H -u 1000 -s /bin/bash www-data
-RUN echo "rponsonn.42.fr 127.0.0.1" >> /etc/hosts
 RUN apk update && apk add --no-cache nginx openssl curl
 RUN mkdir -p /etc/nginx/ssl
 RUN openssl req -x509 -nodes -out /etc/nginx/ssl/inception.crt -keyout /etc/nginx/ssl/inception.key -subj "/C=FR/ST=Paris/L=Paris/O=42/OU=42/CN=rponsonn.42.fr/UID=rponsonn"
