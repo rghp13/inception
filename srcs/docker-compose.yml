@@ -6,13 +6,13 @@ volumes:
         driver_opts:
             type: "none"
             o: "bind"
-            device: "~/vol/wordpress"
+            device: "$HOME/vol/wordpress"
     mariadb:
         driver: local
         driver_opts:
             type: "none"
             o: "bind"
-            device: "~/vol/mariadb"
+            device: "$HOME/vol/mariadb"
 networks:
     backend:
         driver: bridge
