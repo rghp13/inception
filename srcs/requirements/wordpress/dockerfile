@@ -9,7 +9,8 @@ LABEL version="1.0"
 LABEL description="Wordpress Server"
 RUN wget https://wordpress.org/latest.tar.gz -P /var/www
 RUN cd /var/www && tar -xvf latest.tar.gz && rm latest.tar.gz
-RUN chown -R root:root /var/www/wordpress
+RUN mv /var/www/wordpress /var/www/html
+RUN chown -R root:root /var/www/html
 #php config
 
 #install wordpresscli

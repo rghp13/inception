@@ -36,7 +36,8 @@ define( 'DB_CHARSET', 'utf8' );
 
 /** The database collate type. Don't change this if in doubt. */
 define( 'DB_COLLATE', 'utf8_general_ci' );
-
+define( 'WP_HOME', 'https://rponsonn.42.fr' );
+define( 'WP_SITEURL', 'https://rponsonn.42.fr' );
 /**#@+
  * Authentication unique keys and salts.
  *
