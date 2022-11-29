@@ -19,12 +19,12 @@ clean:
 	docker rm -f $(docker ps -a -q) || true
 launch: build up
 volume: 
-	@mkdir -p ~/vol/mariadb
+	@mkdir -p ~/data/mariadb
 	@echo "MariaDB volume created"
-	@mkdir -p ~/vol/wordpress
+	@mkdir -p ~/data/wordpress
 	@echo "Wordpress volume created"
 rvolume:
-	@sudo rm -rf ~/vol
+	@sudo rm -rf ~/data
 setup:
 	@sudo grep -qxF "127.0.0.1 rponsonn.42.fr" /etc/hosts || echo "127.0.0.1 rponsonn.42.fr" >> /etc/hosts
 	@echo "Host added"

@@ -6,19 +6,20 @@ volumes:
         driver_opts:
             type: "none"
             o: "bind"
-            device: "$HOME/vol/wordpress"
+            device: "$HOME/data/wordpress"
     mariadb:
         driver: local
         driver_opts:
             type: "none"
             o: "bind"
-            device: "$HOME/vol/mariadb"
+            device: "$HOME/data/mariadb"
 networks:
     backend:
         driver: bridge
 services:
     mariadb:
         container_name: mariadb
+        image: mariadb
         networks:
             - backend
         build: ./requirements/mariadb
@@ -29,6 +30,7 @@ services:
         restart: unless-stopped
     nginx:
         container_name: nginx
+        image: nginx
         volumes:
             - wordpress:/var/www/html
         networks:
@@ -43,6 +45,7 @@ services:
         restart: on-failure
     wordpress:
         container_name: wordpress
+        image: wordpress
         env_file: .env
         volumes:
             - wordpress:/var/www/html
