@@ -1,5 +1,9 @@
 #!/bin/bash
 #wordpress-cli setup
+while ! mysql -h $MYSQL_HOST -u $MYSQL_USER -p$MYSQL_PASSWORD $MYSQL_DATABASE &> /dev/null; do
+	echo "Waiting for database connection..."
+	sleep 5
+done
 sleep 10
 if [ ! -f /var/www/html/wp-config.php ]; then
 	echo "Installing wordpress..."
